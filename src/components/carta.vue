@@ -1,12 +1,12 @@
 <script setup>
-
+const Props = defineProps({
+  email: Object
+});
 </script>
 
 <template>
-    <div class="border border-black">
-        <p>To: yo</p>
-        <p>From: tu</p>
-        <p>Content: hola</p>
-    </div>
+   <h4>FROM : {{ Props.email._source.from }}</h4>
+   <h4>TO : {{ Props.email._source.to }}</h4>
+   <p>MESSAGE : {{ Props.email._source.content }}</p>
 </template>
 

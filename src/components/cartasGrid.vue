@@ -1,14 +1,17 @@
-<script>
-import carta from './carta.vue';
-export default {
-  components: {
-    carta
-  }
-}
+<script setup>
+import { defineProps } from 'vue';
+import carta from './carta.vue'
+
+const Props = defineProps({
+  emails: Object
+});
+
 </script>
 
 <template>
-    <div class="w-3/5 grid grid-cols-3 gap-3">
-        <carta v-for="index in 8" :key="index" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        <div v-for="email in Props.emails" class="border-4 border-black rounded p-3">
+          <carta :email="email"/>
+        </div>
     </div>
 </template>
