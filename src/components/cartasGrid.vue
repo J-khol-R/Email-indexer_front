@@ -9,9 +9,10 @@ const Props = defineProps({
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        <div v-for="email in Props.emails" class="border-4 border-black rounded p-3">
-          <carta :email="email"/>
-        </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div v-for="email in Props.emails">
+        <carta :email="email"/>
+      </div>
     </div>
+
 </template>
