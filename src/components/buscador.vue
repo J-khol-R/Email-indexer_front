@@ -23,14 +23,18 @@ const fetchMails = async() => {
 
 function next(){
   Counter++
+  console.log(Counter)                      
   pagFinal = (Counter * 21) + Counter - 1
   pagInicio = pagFinal-21
   fetchMails(pagInicio, pagFinal)
 }
 
 function prev(){
-  if (Counter !== 0) {
+  if (Counter == 1) {
+    fetchMails(pagInicio, pagFinal)
+  }else{
     Counter--
+    console.log(Counter)                      
     pagFinal = (Counter * 21) + Counter - 1
     pagInicio = pagFinal-21
     fetchMails(pagInicio, pagFinal)
@@ -121,11 +125,13 @@ function enviarValor(){
             <svg class="h-8 w-8 text-pink-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="9 18 15 12 9 6" /></svg>
             </button>
         </div>
+        <h2 v-if="emails && emails.hits && emails.hits.hits && emails.hits.total" 
+        class="text-xl font-mono text-white mt-5">Resultados:{{ emails.hits.total.value }}</h2>
     </div>
     <!-- fin paginacion -->
 
     <!-- cartasGrid component -->
-    <div v-if="emails && emails.hits && emails.hits.hits" class="container mx-auto w-full mb-20 mt-20">
+    <div v-if="emails && emails.hits && emails.hits.hits && inputValue" class="container mx-auto w-full mb-20 mt-20">
         <cartasGrid :emails="emails.hits.hits" :value="inputValue"/>
     </div>
     <div v-else class="flex justify-center items-center h-80">
