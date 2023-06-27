@@ -11,6 +11,7 @@ import buscador from './components/buscador.vue';
 <style>
 body{
   background-color: #1a2029; 
+  overflow-x: hidden;
 }
 </style>
 

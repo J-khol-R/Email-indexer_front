@@ -1,7 +1,10 @@
 <script setup>
-import { onMounted } from 'vue';
+import { ref } from 'vue';
+import modal from './modal.vue';
 
-let resultado = ""
+// let resultado = ""
+let showModal = ref(false)
+// export {showModal}
 
 const Props = defineProps({
   email: Object,
@@ -16,21 +19,30 @@ function buscarYExtraerSubcadena(texto, palabra, longitud) {
   }
 }
 
+function handle(){
+  console.log(showModal.value)
+  showModal.value = !showModal.value
+  console.log(showModal.value)
+}
+
+// console.log("hola")
+// console.log(Props.value)
 // let texto = "Este es un ejemplo de texto más largo.";
 // let palabraBuscada = "ejemplo";
 // let longitudSubcadena = 10;
-onMounted(() =>{
-  // let texto = "Who is going to send out the final proposal?  I would like to see the simple solution vs. the detailed / major system change solution.  I want to be able to take them back to management and justify what we are doing in your project.  Building a tool in-house which will calculate consumptions bands and other charges."
-  // resultado = buscarYExtraerSubcadena(texto, "system", 35);
+// onMounted(() =>{
+//   // let texto = "Who is going to send out the final proposal?  I would like to see the simple solution vs. the detailed / major system change solution.  I want to be able to take them back to management and justify what we are doing in your project.  Building a tool in-house which will calculate consumptions bands and other charges."
+//   // resultado = buscarYExtraerSubcadena(texto, "system", 35);
   
-  // console.log(Props.email._source.content);
-  console.log(Props.value);
-  // console.log(resultado);
-})
+//   // console.log(Props.email._source.content);
+//   console.log(Props.value);
+//   // console.log(resultado);
+// })
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-4">
+  <modal v-if="showModal" :hola="handle"/>
+  <div class="hola grid grid-cols-3 gap-4" v-on:click="handle" >
     <div  class="col-span-1">
       <svg class="h-20 w-20 text-white"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -70,3 +82,8 @@ onMounted(() =>{
 }
 </style> -->
 
+<style>
+.hola {
+  cursor: pointer;
+}
+</style>
