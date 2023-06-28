@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import modal from './modal.vue';
 
-// let resultado = ""
+let resultado = ref("")
 let showModal = ref(false)
 // export {showModal}
 
@@ -30,14 +30,11 @@ function handle(){
 // let texto = "Este es un ejemplo de texto más largo.";
 // let palabraBuscada = "ejemplo";
 // let longitudSubcadena = 10;
-// onMounted(() =>{
-//   // let texto = "Who is going to send out the final proposal?  I would like to see the simple solution vs. the detailed / major system change solution.  I want to be able to take them back to management and justify what we are doing in your project.  Building a tool in-house which will calculate consumptions bands and other charges."
-//   // resultado = buscarYExtraerSubcadena(texto, "system", 35);
-  
-//   // console.log(Props.email._source.content);
-//   console.log(Props.value);
-//   // console.log(resultado);
-// })
+
+  // let texto = "Who is going to send out the final proposal?  I would like to see the simple solution vs. the detailed / major system change solution.  I want to be able to take them back to management and justify what we are doing in your project.  Building a tool in-house which will calculate consumptions bands and other charges."
+resultado.value = buscarYExtraerSubcadena(Props.email._source.content, Props.value, 35);
+ 
+
 </script>
 
 <template>
@@ -57,7 +54,7 @@ function handle(){
     <div class="col-span-2 mt-8">
       <h4 class="font-mono text-white"><span class="font-extrabold text-pink-500">FROM: </span>{{ Props.email._source.from }}</h4>
       <h4 class="font-mono text-white" ><span class="font-extrabold text-pink-500">TO: </span>{{ Props.email._source.to }}</h4>
-      <p class="font-mono text-white"><span class="font-extrabold text-pink-500">MESSAGE: </span>...{{ Props.email._source.content }}...</p>
+      <p class="font-mono text-white"><span class="font-extrabold text-pink-500">MESSAGE: </span>...{{ resultado }}...</p>
     </div>
   </div>
 </template>
