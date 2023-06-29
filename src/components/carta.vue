@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import modal from './modal.vue';
 
-let resultado = ref("")
 let showModal = ref(false)
 
 const Props = defineProps({
@@ -10,19 +9,6 @@ const Props = defineProps({
   value: String
 
 });
-
-
-//pasar una subcadena desde la palabra buscada
-function buscarYExtraerSubcadena(texto, palabra, longitud) {
-  if (texto.includes(palabra)) {
-    var indice = texto.indexOf(palabra);
-    var subcadena = texto.substring(indice, indice + longitud);
-    return subcadena;
-  }
-}
-//subcadena resultante
-resultado.value = buscarYExtraerSubcadena(Props.email._source.content, Props.value, 50);
-
 
 //mostrar la ventana modal
 function handle(){
@@ -46,7 +32,8 @@ function handle(){
     <div class="col-span-2 mt-8">
       <h4 class="font-mono text-white"><span class="font-extrabold text-red-pink">FROM: </span>{{ Props.email._source.from }}</h4>
       <h4 class="font-mono text-white" ><span class="font-extrabold text-red-pink">TO: </span>{{ Props.email._source.to }}</h4>
-      <p class="font-mono text-white"><span class="font-extrabold text-red-pink">MESSAGE: </span>...{{ resultado }}...</p>
+      <p class="font-mono text-white"><span class="font-extrabold text-red-pink">SUBJECT: </span>{{ Props.email._source.subject }}</p>
+
     </div>
   </div>
 </template>

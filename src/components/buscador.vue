@@ -1,14 +1,13 @@
 <script setup>
 import axiosClient from "../utils/axios";
 import cartasGrid from "./cartasGrid.vue";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
 const emails = ref([]);
 let inputValue = ref("");
 let Counter = 1;
 let pagInicio = 0;
 let pagFinal = 21;
-let load = false
 
 
 //llamada a la api
@@ -45,10 +44,9 @@ function prev() {
   }
 }
 
-//accion del buscado
+//accion del buscador
 function enviarValor() {
   fetchMails();
-  load = true
   Counter = 1
 }
 </script>
@@ -80,22 +78,6 @@ function enviarValor() {
           @click="enviarValor"
           class="bg-transparent border-none cursor-pointer w-full h-full ml-4 transition duration-300 font-medium text-base sm:text-xl hover:opacity-50"
         >
-          <!-- <svg
-            class="h-8 w-8 text-pink-500"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <path
-              d="M21 3L14.5 21a.55 .55 0 0 1 -1 0L10 14L3 10.5a.55 .55 0 0 1 0 -1L21 3"
-            />
-          </svg> -->
           <svg class="w-12 h-12 ml-1/4 fill-red-pink" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
         </button>
       </div>
@@ -157,19 +139,17 @@ function enviarValor() {
 
   <!-- cartasGrid component -->
   <div
-    v-if="emails && emails.hits && emails.hits?.hits"
+    v-if="emails && emails.hits && emails.hits.hits"
     class="container mx-auto w-full mb-20 mt-20"
   >
     <cartasGrid :emails="emails.hits.hits" :value="inputValue" />
   </div>
   <div v-else class="flex justify-center items-center h-80">
-    <div v-if="load">
       <svg xmlns="http://www.w3.org/2000/svg" 
         class="h-24 w-24 fill-red-pink animate-spin"
         width="15"
         height="15" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"/></svg>
-    </div>
-    </div>
+  </div>
 </template>
 
 

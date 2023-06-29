@@ -16,7 +16,7 @@ const handleCloseModal = () => {
     <div class="relative w-70vw max-w-1200px min-w-280px h-40vw max-h-800px min-h-240px rounded-2xl bg-gray-500">
 
         <div class="flex justify-center mt-7 overflow-hidden">
-            <div class="w-55vw max-w-720px min-w-280px h-35vw max-h-500px min-h-150px overflow-auto">
+            <div class="w-55vw max-w-720px min-w-280px h-35vw max-h-500px min-h-150px overflow-auto overflow-wrap break-word">
                 <p class="font-mono text-xl">
                     <span class="font-extrabold mt-1 text-2xl">From: </span> {{ Props.emails._source.from }}
                 </p>
