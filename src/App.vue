@@ -3,9 +3,7 @@ import buscador from './components/buscador.vue';
 </script>
 
 <template>
-  <div>
-    <buscador/>
-  </div>
+  <buscador/>
 </template>
 
 <style>
