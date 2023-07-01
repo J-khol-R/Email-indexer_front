@@ -24,7 +24,8 @@ export default {
         'red-pink': 'rgb(231, 47, 111)'
       },
       colors:{
-        'red-pink': 'rgb(231, 47, 111)'
+        'red-pink': 'rgb(231, 47, 111)',
+        'darkBg': '#1a2029'
       }
     },
   },

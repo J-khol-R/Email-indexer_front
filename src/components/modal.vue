@@ -26,6 +26,22 @@ const handleCloseModal = () => {
                 <p class="font-mono mt-8 ml-4 text-xl">
                     {{ Props.emails._source.content }}
                 </p>
+                <div v-for="submail in Props.emails._source.treads" class="mt-10 ml-10">
+                    <div v-if="submail.from !== '' && submail.to !== '' && submail.subject !== ''" class="border-t border-dashed border-white">
+                        <p class="font-mono text-xl mt-5">
+                        <span class="font-extrabold mt-1 text-2xl">From: </span> {{ submail.from }}
+                        </p>
+                        <p class="font-mono mt-1 text-xl">
+                            <span class="font-extrabold text-2xl">To: </span> {{ submail.from }}
+                        </p>
+                        <p class="font-mono mt-1 text-xl">
+                            <span class="font-extrabold text-2xl">Subject: </span> {{ submail.subject }}
+                        </p>
+                        <p class="font-mono mt-8 ml-4 text-xl">
+                        {{ submail.content }}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <button @click="handleCloseModal" class="absolute top-7 right-5 cursor-pointer w-3vw h-3vw max-w-50 max-h-50 min-w-25 min-h-25">

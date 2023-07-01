@@ -29,7 +29,7 @@ function handle(){
       </svg>
       <p class="font-mono font-semibold text-white">{{ Props.email._source.date }}</p>
     </div>
-    <div class="col-span-2 mt-8">
+    <div class="col-span-2 mt-8 overflow-hidden">
       <h4 class="font-mono text-white"><span class="font-extrabold text-red-pink">FROM: </span>{{ Props.email._source.from }}</h4>
       <h4 class="font-mono text-white" ><span class="font-extrabold text-red-pink">TO: </span>{{ Props.email._source.to }}</h4>
       <p class="font-mono text-white"><span class="font-extrabold text-red-pink">SUBJECT: </span>{{ Props.email._source.subject }}</p>
